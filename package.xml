@@ -2,14 +2,15 @@
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
   <name>kitware_slam</name>
-  <version>0.0.0</version>
-  <description>TODO: Package description</description>
-  <maintainer email="maslab-2024-vm@mit.edu">maslab</maintainer>
-  <license>TODO: License declaration</license>
+  <version>0.0.1</version>
+  <description>SLAM and nagivation for kitbot</description>
+  <maintainer email="maslab-staff@mit.edu">maslab</maintainer>
+  <license>MIT</license>
 
   <exec_depend>ros2launch</exec_depend>
   <exec_depend>rclpy</exec_depend>
   <exec_depend>nav_msgs</exec_depend>
+  <exec_depend>geometry_msgs</exec_depend>
   <exec_depend>kitware_interface</exec_depend>
 
   <test_depend>ament_copyright</test_depend>
