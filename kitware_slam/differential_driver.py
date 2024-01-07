@@ -18,17 +18,17 @@ RATE = 100
 
 # PID constants
 ## Distance
-D_P = 0.7
+D_P = 0.35
 D_I = 0.1
-D_D = 0.5
-D_MAX = 0.4
-D_MID = 0.3
+D_D = 0.25
+D_MAX = 0.3
+D_MID = 0.2
 D_MIN = 0.1
 ## Angle
 A_P = 1.0
 A_I = 0.1
 A_D = 1.0
-A_MAX = 0.15
+A_MAX = 0.25
 A_MID = 0.1
 A_MIN = 0.0
 
@@ -86,7 +86,10 @@ class DifferentialDriverNode(Node):
       # Calculate error
       (d_error, a_error) = self.__get_error()
       # Determine angle tolerance based on distance tolerance sine error
-      a_tol = asin(D_TOL, d_error) 
+      try:
+        a_tol = asin(D_TOL, d_error)
+      except:
+        a_tol = pi/2
       # Update gain
       (a_gain, a_done) = self.angle_pid.update(a_error, a_tol)
 
@@ -107,7 +110,10 @@ class DifferentialDriverNode(Node):
       # Calculate error
       (d_error, a_error) = self.__get_error()
       # Determine angle tolerance based on distance tolerance sine error
-      a_tol = asin(D_TOL, d_error) 
+      try:
+        a_tol = asin(D_TOL, d_error)
+      except:
+        a_tol = pi/2
       # Update gains
       (d_gain, d_done) = self.distance_pid.update(d_error, D_TOL)
       (a_gain, a_done) = self.angle_pid.update(a_error, a_tol)
