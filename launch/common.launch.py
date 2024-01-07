@@ -18,7 +18,7 @@ def generate_launch_description():
     package='tf2_ros',
     executable='static_transform_publisher',
     name='base_link_to_base_laser_tf_node',
-    arguments=['0','0','0','0','0','0','base_link','base_laser'], # Edit for correct location of laser base with respect to center of robot
+    arguments=['0.06','0','0.1','0','0','0','base_link','base_laser'], # Edit for correct location of laser base with respect to center of robot
   )
 
   laser_scan_matcher_node = Node(
@@ -51,11 +51,19 @@ def generate_launch_description():
     output='screen'
   )
 
+  # Differential driver node
+  differential_driver_node = Node(
+    package='kitware_slam',
+    executable='differential_driver_node',
+    output='screen'
+  )
+
   # Define LaunchDescription variable
   ld = LaunchDescription()
   ld.add_action(base_link_to_base_laser_tf_node)
   ld.add_action(laser_scan_matcher_node)
   ld.add_action(sync_slam_toolbox_node)
   ld.add_action(kitbot_node)
+  ld.add_action(differential_driver_node)
 
   return ld
