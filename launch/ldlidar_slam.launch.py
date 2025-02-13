@@ -29,7 +29,16 @@ def generate_launch_description():
     package='tf2_ros',
     executable='static_transform_publisher',
     name='base_laser_to_laser_frame_tf_node',
-    arguments=['0','0','0.018','0','0','0','base_laser','laser_frame']
+    # arguments=['0','0','0.018','0','0','0','base_laser','laser_frame']
+    arguments=['--x', '0',
+               '--y', '0',
+               '--z', '0.018',
+               '--yaw', '0', 
+               '--pitch', '0',
+               '--roll', '0',
+               '--frame-id', 'base_laser',
+               '--child-frame-id', 'laser_frame'
+              ]
   )
 
   # Common launch

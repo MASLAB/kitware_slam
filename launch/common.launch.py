@@ -18,7 +18,15 @@ def generate_launch_description():
     package='tf2_ros',
     executable='static_transform_publisher',
     name='base_link_to_base_laser_tf_node',
-    arguments=['0.06','0','0.1','0','0','0','base_link','base_laser'], # Edit for correct location of laser base with respect to center of robot
+    arguments=['--x', '0.06',
+               '--y', '0',
+               '--z', '0.1',
+               '--yaw', '0', 
+               '--pitch', '0',
+               '--roll', '0',
+               '--frame-id', 'base_link',
+               '--child-frame-id', 'base_laser'
+              ], # Edit for correct location of laser base with respect to center of robot
   )
 
   laser_scan_matcher_node = Node(
